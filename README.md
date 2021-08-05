@@ -14,11 +14,11 @@
 4. Then the script scraps the review details as mentioned in the problem from all pages till December 2020.
 5. After the above process the code generates the required output.csv file.
 
-## Problem Faced 
+## Challenges
 1. The empty titles were making different sized lists in the beginning.
 2. The date has to be converted to datetime format from string format.
 
-## What's next?
+## Future Improvements
 1. Scrapy or BeautifulSoup can be used for easy and fast implementation as compared to selenium.
 2. It will be reusable code for other products, time/date range.
 3. It can also be used for other retailing websites by changing the url link of product/retailer and taking the limitations of script blocking etc into consideration.
