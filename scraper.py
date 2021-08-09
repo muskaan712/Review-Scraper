@@ -1,4 +1,5 @@
 # Importing lib
+from numpy import NaN
 from selenium import webdriver
 from dateutil.parser import parse
 import time
@@ -12,11 +13,13 @@ options = webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
 driver = webdriver.Chrome('D:\scraper\chromedriver.exe', options=options)
 
+# Implicitly waiting for 20 seconds before timeout
+driver.implicitly_wait(20)
+
 # Link for Product
 url='https://www.walmart.com/ip/Clorox-Disinfecting-Wipes-225-Count-Value-Pack-Crisp-Lemon-and-Fresh-Scent-3-Pack-75-Count-Each/14898365'
 driver.get(url)
 driver.find_element_by_xpath("//*[@id='customer-reviews-header']/div[2]/div/div[3]/a[2]/span").click()
-time.sleep(5)
 driver.find_element_by_xpath("/html/body/div[1]/div/div/div/div[1]/div/div[5]/div/div[2]/div/div[2]/div/div[2]/select/option[3]").click()
 reviewsURL = driver.current_url
 
@@ -46,7 +49,7 @@ while True:
             review_title = review.find_element_by_class_name("review-title").text
         except: 
             # Filling it with blank/not a number
-            review_title= None
+            review_title = None
         # Description
         review_desc = review.find_element_by_class_name("review-text").text
         df.loc[len(df.index)] = [date_in_num,reviewer_name,review_title,review_desc,rating]
