@@ -1,5 +1,4 @@
 # Importing lib
-from numpy import NaN
 from selenium import webdriver
 from dateutil.parser import parse
 import time
